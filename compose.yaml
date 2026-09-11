@@ -1,0 +1,22 @@
+networks:
+  v6net:
+    enable_ipv6: true
+    ipam:
+      config:
+        - subnet: fd0c:dead:beef::/64
+        - subnet: 172.28.0.0/16
+
+services:
+  tdarr:
+    # aarch64 image; on amd64 hosts use ghcr.io/alexbelgium/tdarr-amd64:2.86.01
+    image: ghcr.io/alexbelgium/tdarr-aarch64:2.86.01
+    networks: [v6net]
+    environment:
+      PUID: "0"
+      PGID: "0"
+
+  prober:
+    image: curlimages/curl:latest
+    networks: [v6net]
+    command: sleep 3600
+    depends_on: [tdarr]
