@@ -1,5 +1,7 @@
 # tdarr-ipv6-repro
 
+[![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white)](https://github.com/Mearman/tdarr-ipv6-repro)
+
 Tdarr's WebUI and server ports bind IPv4-only, which breaks them on any IPv6-enabled Docker network. This repo reproduces it in three commands.
 
 ## The bug
